@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5225818794275907029}
   - component: {fileID: 4049142224972715963}
   - component: {fileID: 4096417568749119502}
+  - component: {fileID: 5627824004321455967}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   rotationSpeed: 50
+  health: 100
 --- !u!65 &4096417568749119502
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -70,6 +72,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.1518366, z: 3.0016594}
   m_Center: {x: 0, y: 0.57318974, z: -0.06513947}
+--- !u!208 &5627824004321455967
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723277563232466007}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.205, y: 0.76, z: 0.96}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1900368916034463590
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,7 +101,7 @@ GameObject:
   - component: {fileID: 8117200621329573669}
   m_Layer: 0
   m_Name: body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,7 +188,7 @@ GameObject:
   - component: {fileID: 9114505794797881314}
   m_Layer: 0
   m_Name: Graphics
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -300,7 +318,7 @@ GameObject:
   - component: {fileID: 4311927139106579349}
   m_Layer: 0
   m_Name: wheel_frontRight
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,7 +403,7 @@ GameObject:
   - component: {fileID: 117018682015792257}
   m_Layer: 0
   m_Name: wheel_backRight
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -470,7 +488,7 @@ GameObject:
   - component: {fileID: 7530733418436846748}
   m_Layer: 0
   m_Name: wheel_frontLeft
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,7 +573,7 @@ GameObject:
   - component: {fileID: 2837980323502176616}
   m_Layer: 0
   m_Name: wheel_backLeft
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

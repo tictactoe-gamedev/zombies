@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] float speed = 5f; // Adjust the speed as needed
     [SerializeField] float rotationSpeed = 100f; // Adjust the rotation speed as needed   
+
+    [SerializeField] int health = 100;
+
     public static Player Instance;
     
     // Start is called before the first frame update
@@ -30,5 +33,14 @@ public class Player : MonoBehaviour
         // Move and rotate the car
         transform.Translate(movement);
         transform.Rotate(0f, rotation, 0f);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
