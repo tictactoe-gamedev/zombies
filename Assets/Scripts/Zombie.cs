@@ -12,7 +12,7 @@ public class Zombie : MonoBehaviour, IDamageable
     NavMeshAgent navMeshAgent;
 
     Animator animator;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +24,9 @@ public class Zombie : MonoBehaviour, IDamageable
     void Update()
     {
         UpdatePathfinding();
-        CheckIfPlayerInRange();
+        //CheckIfPlayerInRange();
 
-        if(navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
+        if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
         {
             animator.SetBool("walk", true);
         }
@@ -34,48 +34,41 @@ public class Zombie : MonoBehaviour, IDamageable
         {
             animator.SetBool("walk", false);
         }
-
-        if(Physics.SphereCast(transform.position, 0.5f, transform.forward, out RaycastHit hit, 1f))
-        {
-            if(hit.collider.CompareTag(playerTag))
-            {
-                transform.LookAt(Player.Instance.transform);
-            }
-
-        }
     }
 
     //Makes Zombie follor the player
     private void UpdatePathfinding()
     {
-        if(navMeshAgent.destination != Player.Instance.transform.position)
-        {
-            navMeshAgent.SetDestination(Player.Instance.transform.position);
-        }
+
+        navMeshAgent.SetDestination(Player.Instance.transform.position);
 
     }
 
     void CheckIfPlayerInRange()
     {
 
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, detectionRange))
+        if (Physics.SphereCast(transform.position, detectionRange, transform.forward, out RaycastHit hit))
         {
             Debug.Log(hit.collider.name);
+
             // Check if the hit object has the specified tag
             if (hit.collider.CompareTag(playerTag))
             {
                 Debug.Log("Player in range!");
 
                 animator.SetBool("attack", true);
+                transform.LookAt(Player.Instance.transform);
+
             }
             else
             {
                 animator.SetBool("attack", false);
             }
-        }else
-            {
-                animator.SetBool("attack", false);
-            }
+        }
+        else
+        {
+            animator.SetBool("attack", false);
+        }
     }
 
 
@@ -88,10 +81,10 @@ public class Zombie : MonoBehaviour, IDamageable
         }
     }
 
-        void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward * detectionRange);
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
     }
 
 }
