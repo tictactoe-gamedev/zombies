@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,9 @@ public class Zombie : MonoBehaviour, IDamageable
     [SerializeField] LayerMask playerTag;
 
     [SerializeField] int health = 100;
+    [SerializeField] private float deathDelay;
+
+    [SerializeField] private GameObject skeletonRoot;
 
     NavMeshAgent navMeshAgent;
 
@@ -18,6 +22,7 @@ public class Zombie : MonoBehaviour, IDamageable
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        SetRagdollState(false);
     }
 
     // Update is called once per frame
@@ -42,6 +47,24 @@ public class Zombie : MonoBehaviour, IDamageable
 
 
 
+    }
+
+    private void SetRagdollState(bool state)
+    {
+        Rigidbody[] rigidbodies = GetComponentsInChildren<Rigidbody>();
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach (var rigidbody in rigidbodies)
+        {
+            rigidbody.isKinematic = !state;
+        }
+
+        foreach (var collider in colliders)
+        {
+            collider.enabled = state;
+        }
+
+        GetComponent<Rigidbody>().isKinematic = state;
+        GetComponent<Collider>().enabled = !state;
     }
 
     void CheckIfPlayerInRange()
@@ -70,7 +93,13 @@ public class Zombie : MonoBehaviour, IDamageable
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            //turn dead zombie into ragdoll
+            animator.enabled = false;
+            navMeshAgent.enabled = false;
+            SetRagdollState(true);
+            print("deathdelay: " + deathDelay);
+            Destroy(gameObject, deathDelay);
+            enabled = false;
         }
     }
 
