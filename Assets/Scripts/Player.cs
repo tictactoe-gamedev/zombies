@@ -31,6 +31,7 @@ public class Player : MonoBehaviour, IDamageable
     void Update()
     {
         float verticalInput = Input.GetAxis("Vertical");
+
         // Calculate movement
         Vector3 movement = Vector3.zero;
 
