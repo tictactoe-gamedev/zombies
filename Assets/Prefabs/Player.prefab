@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5225818794275907029}
   - component: {fileID: 4049142224972715963}
-  - component: {fileID: 2302996540455277232}
   - component: {fileID: 4096417568749119502}
   - component: {fileID: 5627824004321455967}
   - component: {fileID: 8364322468600331847}
@@ -56,23 +55,6 @@ MonoBehaviour:
   rotationSpeed: 75
   health: 100
   damageMultiplier: 0.5
---- !u!114 &2302996540455277232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1723277563232466007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e61e36e490f5c3b4bb8cdb502378e300, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedometerNeedle: {fileID: 0}
-  maxSpeedText: {fileID: 0}
-  currentSpeedText: {fileID: 0}
-  needleMinRotation: -45
-  needleMaxRotation: 45
 --- !u!65 &4096417568749119502
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -92,8 +74,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.1518366, z: 3.0016594}
-  m_Center: {x: 0, y: 0.57318974, z: -0.06513947}
+  m_Size: {x: 1, y: 1.1330827, z: 3.0016594}
+  m_Center: {x: 0, y: 0.5825667, z: -0.06513953}
 --- !u!208 &5627824004321455967
 NavMeshObstacle:
   m_ObjectHideFlags: 0
