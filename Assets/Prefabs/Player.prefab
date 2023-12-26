@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4049142224972715963}
   - component: {fileID: 4096417568749119502}
   - component: {fileID: 5627824004321455967}
-  m_Layer: 0
+  - component: {fileID: 8364322468600331847}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c806d06499c61cf47823ab6d01de5d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 125
   rotationSpeed: 50
   health: 100
 --- !u!65 &4096417568749119502
@@ -84,9 +85,36 @@ NavMeshObstacle:
   m_Extents: {x: 0.205, y: 0.76, z: 0.96}
   m_MoveThreshold: 0.1
   m_Carve: 1
-  m_CarveOnlyStationary: 1
+  m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!54 &8364322468600331847
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723277563232466007}
+  serializedVersion: 4
+  m_Mass: 50
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &1900368916034463590
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +126,7 @@ GameObject:
   - component: {fileID: 6189142761944981700}
   - component: {fileID: 895097929376847535}
   - component: {fileID: 8117200621329573669}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: body
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -185,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9114505794797881314}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Graphics
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -223,7 +251,7 @@ GameObject:
   - component: {fileID: 5202867030050268641}
   - component: {fileID: 4379705638470994069}
   - component: {fileID: 4311927139106579349}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel_frontRight
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -308,7 +336,7 @@ GameObject:
   - component: {fileID: 9161929397367209675}
   - component: {fileID: 4316973803593360348}
   - component: {fileID: 117018682015792257}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel_backRight
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -393,7 +421,7 @@ GameObject:
   - component: {fileID: 1554400068970001959}
   - component: {fileID: 8995394579803072039}
   - component: {fileID: 7530733418436846748}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel_frontLeft
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -478,7 +506,7 @@ GameObject:
   - component: {fileID: 5515646485183748325}
   - component: {fileID: 5402376156234351671}
   - component: {fileID: 2837980323502176616}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wheel_backLeft
   m_TagString: Player
   m_Icon: {fileID: 0}

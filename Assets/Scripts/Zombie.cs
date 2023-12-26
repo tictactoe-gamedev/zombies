@@ -5,7 +5,7 @@ public class Zombie : MonoBehaviour, IDamageable
 {
 
     [SerializeField] float detectionRange = 10f;
-    [SerializeField] string playerTag = "Player";
+    [SerializeField] LayerMask playerTag;
 
     [SerializeField] int health = 100;
 
@@ -24,7 +24,7 @@ public class Zombie : MonoBehaviour, IDamageable
     void Update()
     {
         UpdatePathfinding();
-        //CheckIfPlayerInRange();
+        CheckIfPlayerInRange();
 
         if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
         {
@@ -40,35 +40,28 @@ public class Zombie : MonoBehaviour, IDamageable
     private void UpdatePathfinding()
     {
 
-        navMeshAgent.SetDestination(Player.Instance.transform.position);
+
 
     }
 
     void CheckIfPlayerInRange()
     {
 
-        if (Physics.SphereCast(transform.position, detectionRange, transform.forward, out RaycastHit hit))
+        if (Physics.SphereCast(transform.position, detectionRange, transform.forward, out RaycastHit hit, detectionRange, playerTag))
         {
             Debug.Log(hit.collider.name);
 
-            // Check if the hit object has the specified tag
-            if (hit.collider.CompareTag(playerTag))
-            {
-                Debug.Log("Player in range!");
-
-                animator.SetBool("attack", true);
-                transform.LookAt(Player.Instance.transform);
-
-            }
-            else
-            {
-                animator.SetBool("attack", false);
-            }
+            animator.SetBool("attack", true);
+            transform.LookAt(Player.Instance.transform);
+            return;
         }
         else
         {
             animator.SetBool("attack", false);
         }
+
+        navMeshAgent.SetDestination(Player.Instance.transform.position);
+
     }
 
 
