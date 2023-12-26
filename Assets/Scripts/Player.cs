@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IDamageable
@@ -33,18 +30,17 @@ public class Player : MonoBehaviour, IDamageable
 
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         // Calculate movement
         Vector3 movement = Vector3.zero;
 
         if (verticalInput > 0f) //accelerate forward
         {
-            movement = transform.forward * acceleration * verticalInput;
+            movement = acceleration * verticalInput * transform.forward;
         }
         else //reverse
         {
-            movement = transform.forward * reverseAcceleration * verticalInput;
+            movement = reverseAcceleration * verticalInput * transform.forward;
         }
 
         // Apply forces to Rigidbody
@@ -72,16 +68,16 @@ public class Player : MonoBehaviour, IDamageable
         //Based on the documentation, to get the force applied you would just divide this value by the last frame's Time.fixedDeltaTime (since in physics, impulse = force * time):
         Vector3 collisionForce = other.impulse / Time.deltaTime;
         float collisionDamage = collisionForce.magnitude * damageMultiplier;
-        
+
         //if player hits zombie -> damage zombie
-        if (other.gameObject.TryGetComponent(out Zombie zombie) && 
+        if (other.gameObject.TryGetComponent(out Zombie zombie) &&
             GetComponent<Rigidbody>().velocity.magnitude > zombie.GetComponent<Rigidbody>().velocity.magnitude) //check if player is running into zombie and not the other way around so that zombie doesnt damage itself
         {
             zombie.TakeDamage((int)collisionDamage);
         }
         else //if player hits a wall or something -> damage player
         {
-            
+
         }
     }
 

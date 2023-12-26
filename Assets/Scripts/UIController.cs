@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -13,18 +10,18 @@ public class UIController : MonoBehaviour
     [SerializeField] private float needleMaxRotation;
     private void Start()
     {
-        if(Player.Instance == null) return;
-        
+        if (Player.Instance == null) return;
+
         InitializeSpeedometer(Player.Instance.TopSpeed);
     }
 
     void Update()
     {
-        if(Player.Instance == null) return;
+        if (Player.Instance == null) return;
 
         UpdateSpeedometer(Player.Instance.CurrentSpeed, Player.Instance.TopSpeed);
     }
-    
+
     private void InitializeSpeedometer(float topSpeed)
     {
         maxSpeedText.text = topSpeed.ToString();
