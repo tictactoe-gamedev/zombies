@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 --- !u!1 &100978174
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +330,11 @@ GameObject:
   - component: {fileID: 197636198}
   - component: {fileID: 197636199}
   m_Layer: 6
+<<<<<<< Updated upstream
   m_Name: UI (1)
+=======
+  m_Name: UI
+>>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -793,6 +802,10 @@ Terrain:
   m_EnableHeightmapRayTracing: 1
   m_EnableTreesAndDetailsRayTracing: 0
   m_TreeMotionVectorModeOverride: 3
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 --- !u!1 &761696514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,6 +1194,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1892879015}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &1067770728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1307,6 +1325,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+    - target: {fileID: 4049142224972715963, guid: 82412d073ca6d4a4697c2fa9a26dfc11, type: 3}
+      propertyPath: acceleration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4049142224972715963, guid: 82412d073ca6d4a4697c2fa9a26dfc11, type: 3}
+      propertyPath: reverseAcceleration
+      value: 3
+      objectReference: {fileID: 0}
+>>>>>>> Stashed changes
     - target: {fileID: 5225818794275907029, guid: 82412d073ca6d4a4697c2fa9a26dfc11, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.136509
@@ -1648,6 +1677,10 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422153249}
   m_CullTransparentMesh: 1
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 --- !u!1 &1468377179
 GameObject:
   m_ObjectHideFlags: 0
