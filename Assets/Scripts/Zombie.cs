@@ -93,6 +93,7 @@ public class Zombie : MonoBehaviour, IDamageable
         if (health <= 0)
         {
             //turn dead zombie into ragdoll
+            GameStateManager.Instance.ZombieKilled(this);
             animator.enabled = false;
             navMeshAgent.enabled = false;
             SetRagdollState(true);

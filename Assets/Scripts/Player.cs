@@ -10,6 +10,10 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] float rotationSpeed = 100f;
     [SerializeField] int health = 100;
     [SerializeField] private float damageMultiplier; //car driving into zombie at speed does around 1500 damage with a multiplier of 1
+    public float fuelPercentage { get; private set; } = 1f; // 1 = 100% fuel
+    [SerializeField] private float fuelUsage; //how much fuel the car uses whenthe player accelerates
+    private Controls controls;
+    private Vector2 moveInput;
 
     private Rigidbody rb;
 
@@ -20,6 +24,9 @@ public class Player : MonoBehaviour, IDamageable
         {
             Instance = this;
         }
+
+        controls = new Controls();
+        controls.InGame.Enable();
         rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
@@ -30,18 +37,31 @@ public class Player : MonoBehaviour, IDamageable
 
     void Update()
     {
-        float verticalInput = Input.GetAxis("Vertical");
+        if (fuelPercentage < 0f) //player ran out of fuel -> GAME OVER
+        {
+            Debug.Log("OUT OF FUEL! GAME OVER!!!");
+            return;
+        }
+        GetPlayerInput();
+    }
+
+    private void GetPlayerInput()
+    {
+        moveInput = controls.InGame.Movement.ReadValue<Vector2>();
+        print(controls.InGame.Movement.ReadValue<Vector2>());
 
         // Calculate movement
         Vector3 movement = Vector3.zero;
 
-        if (verticalInput > 0f) //accelerate forward
+        if (moveInput.y > 0f) //accelerate forward
         {
-            movement = acceleration * verticalInput * transform.forward;
+            movement = acceleration * moveInput.y * transform.forward;
+            fuelPercentage -= fuelUsage * Time.deltaTime;
         }
         else //reverse
         {
-            movement = reverseAcceleration * verticalInput * transform.forward;
+            movement = reverseAcceleration * moveInput.y * transform.forward;
+            fuelPercentage -= fuelUsage * Time.deltaTime;
         }
 
         // Apply forces to Rigidbody
@@ -54,7 +74,7 @@ public class Player : MonoBehaviour, IDamageable
         if (rb.velocity.magnitude > 0.1f)
         {
             // Calculate rotation based on speed
-            float rotation = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
+            float rotation = moveInput.x * rotationSpeed * Time.deltaTime;
             Quaternion deltaRotation = Quaternion.Euler(0f, rotation, 0f);
 
             // Apply rotation to Rigidbody
